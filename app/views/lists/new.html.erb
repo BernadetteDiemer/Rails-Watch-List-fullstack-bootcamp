@@ -1,0 +1,7 @@
+<h4>Create your own list of movies:</h4>
+
+<%= simple_form_for [ @list ] do |f| %>
+  <p>Give your list a fitting name</p>
+  <%= f.input :name %>
+  <%= f.submit "CREATE FORM", class: "btn btn-primary" %>
+<% end %>

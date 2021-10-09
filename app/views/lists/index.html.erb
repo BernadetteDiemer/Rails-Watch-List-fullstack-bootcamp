@@ -1,0 +1,14 @@
+<h3>All Lists</h3>
+<br>
+<% @lists.each do |list| %>
+  <p><%= link_to list.name, list_path(list.id) %>
+  <%= link_to %> <i class="fa-solid fa-trash-can"></i> <%  %></p>
+<% end %>
+
+<h4>Create your own list</h4>
+
+<%= simple_form_for [ @list ] do |f| %>
+  <p>Give your list a fitting name</p>
+  <%= f.input :name %>
+  <%= f.submit "CREATE FORM", class: "btn btn-primary" %>
+<% end %>

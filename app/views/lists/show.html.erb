@@ -1,0 +1,21 @@
+<h3><%= @list.name %></h3>
+<br>
+<p>Add a movie</p>
+<%= simple_form_for [ @list, @bookmark ] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :overview %>
+  <%= f.input :poster_url %>
+  <%= f.input :rating %>
+  <%= f.submit "add movie", class: "btn btn-primary" %>
+<% end %>
+
+
+<% @list.movies.each do |movie| %>
+  <img src="<% movie.poster_url %>" alt="#{movie.title} movie poster">
+  <h4><%= movie.title %></h4>
+  <p><%= movie.overview %></p>
+  <h2><%= movie.rating %></h2>
+  <i class="fa-solid fa-trash-can"></i><%= link_to "Delete from #{@list.name}" %>
+<% end %>
+
+<%= link_to "Back to all lists", lists_path %>
