@@ -1,27 +1,29 @@
-<h3><%= @list.name %></h3>
-<br>
-<p>Add a movie</p>
-<%= simple_form_for [ @list, @bookmark ] do |f| %>
-  <%= f.association :movie %>
-  <%= f.input :comment %>
-  <%= f.submit "add movie", class: "btn btn-primary" %>
-<% end %>
-
-
-<% @list.bookmarks.each do |bookmark| %>
-  <img src="<% bookmark.movie.poster_url %>" alt="<% bookmark.movie.title %> movie poster">
-  <h4><%= bookmark.movie.title.upcase %></h4>
-  <p><%= bookmark.movie.overview %></p>
-  <h2><%= bookmark.movie.rating %></h2>
-  <i class="far fa-trash-alt"></i>
-  <%= link_to "Delete #{bookmark.movie.title}", bookmark_path(bookmark.id), method: :delete %>
+<div class="container">
+  <h3><%= @list.name %></h3>
   <br>
-<% end %>
-<br>
-<%= link_to "Back to all lists", lists_path %>
-<br>
-<br>
-<%= link_to "Delete #{@list.name}",
-            list_path(@list),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
+  <p>Add a movie</p>
+  <%= simple_form_for [ @list, @bookmark ] do |f| %>
+    <%= f.association :movie %>
+    <%= f.input :comment %>
+    <%= f.submit "add movie", class: "btn btn-primary" %>
+  <% end %>
+
+
+  <% @list.bookmarks.each do |bookmark| %>
+    <img src="<% bookmark.movie.poster_url %>" alt="<% bookmark.movie.title %> movie poster">
+    <h4><%= bookmark.movie.title.upcase %></h4>
+    <p><%= bookmark.movie.overview %></p>
+    <h2><%= bookmark.movie.rating %></h2>
+    <i class="far fa-trash-alt"></i>
+    <%= link_to "Delete #{bookmark.movie.title}", bookmark_path(bookmark.id), method: :delete %>
+    <br>
+  <% end %>
+  <br>
+  <%= link_to "Back to all lists", lists_path %>
+  <br>
+  <br>
+  <%= link_to "Delete #{@list.name}",
+              list_path(@list),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+</div>

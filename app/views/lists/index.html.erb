@@ -2,15 +2,18 @@
   <h1>CINEPHILES</h1>
   <p>curate your own movie collections</p>
 </div>
-<br>
-<% @lists.each do |list| %>
-  <p><%= link_to list.name, list_path(list.id) %></p>
-<% end %>
 
-<h4>Create your own list</h4>
+<div class="container">
+  <br>
+  <% @lists.each do |list| %>
+    <p><%= link_to list.name, list_path(list.id) %></p>
+  <% end %>
 
-<%= simple_form_for [ @list ] do |f| %>
-  <p>Give your list a fitting name</p>
-  <%= f.input :name %>
-  <%= f.submit "CREATE LIST", class: "btn btn-primary" %>
-<% end %>
+  <h4>Create your own list</h4>
+
+  <%= simple_form_for [ @list ] do |f| %>
+    <p>Give your list a fitting name</p>
+    <%= f.input :name %>
+    <%= f.submit "CREATE LIST", class: "btn btn-primary" %>
+  <% end %>
+</div>
