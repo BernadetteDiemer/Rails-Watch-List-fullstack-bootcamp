@@ -2,20 +2,26 @@
 <br>
 <p>Add a movie</p>
 <%= simple_form_for [ @list, @bookmark ] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :overview %>
-  <%= f.input :poster_url %>
-  <%= f.input :rating %>
+  <%= f.association :movie %>
+  <%= f.input :comment %>
   <%= f.submit "add movie", class: "btn btn-primary" %>
 <% end %>
 
 
-<% @list.movies.each do |movie| %>
-  <img src="<% movie.poster_url %>" alt="#{movie.title} movie poster">
-  <h4><%= movie.title %></h4>
-  <p><%= movie.overview %></p>
-  <h2><%= movie.rating %></h2>
-  <i class="fa-solid fa-trash-can"></i><%= link_to "Delete from #{@list.name}" %>
+<% @list.bookmarks.each do |bookmark| %>
+  <img src="<% bookmark.movie.poster_url %>" alt="<% bookmark.movie.title %> movie poster">
+  <h4><%= bookmark.movie.title.upcase %></h4>
+  <p><%= bookmark.movie.overview %></p>
+  <h2><%= bookmark.movie.rating %></h2>
+  <i class="far fa-trash-alt"></i>
+  <%= link_to "Delete #{bookmark.movie.title}", bookmark_path(bookmark.id), method: :delete %>
+  <br>
 <% end %>
-
+<br>
 <%= link_to "Back to all lists", lists_path %>
+<br>
+<br>
+<%= link_to "Delete #{@list.name}",
+            list_path(@list),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>

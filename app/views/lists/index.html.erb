@@ -1,8 +1,10 @@
-<h3>All Lists</h3>
+<div class="banner justify-content-center">
+  <h1>CINEPHILES</h1>
+  <p>curate your own movie collections</p>
+</div>
 <br>
 <% @lists.each do |list| %>
-  <p><%= link_to list.name, list_path(list.id) %>
-  <%= link_to %> <i class="fa-solid fa-trash-can"></i> <%  %></p>
+  <p><%= link_to list.name, list_path(list.id) %></p>
 <% end %>
 
 <h4>Create your own list</h4>
@@ -10,5 +12,5 @@
 <%= simple_form_for [ @list ] do |f| %>
   <p>Give your list a fitting name</p>
   <%= f.input :name %>
-  <%= f.submit "CREATE FORM", class: "btn btn-primary" %>
+  <%= f.submit "CREATE LIST", class: "btn btn-primary" %>
 <% end %>
