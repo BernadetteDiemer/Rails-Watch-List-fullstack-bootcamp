@@ -30,6 +30,9 @@ gem 'simple_form'
 # for secret keys
 gem 'dotenv-rails', groups: [:development, :test]
 
+# cloudinary
+gem 'cloudinary', '~> 1.16.0'
+
 # faker
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
