@@ -14,13 +14,14 @@
     <img src="<% bookmark.movie.poster_url %>" alt="<% bookmark.movie.title %> movie poster">
     <h4><%= bookmark.movie.title.upcase %></h4>
     <p><%= bookmark.movie.overview %></p>
+    <p><%= bookmark.comment %></p>
     <h2><%= bookmark.movie.rating %></h2>
     <i class="far fa-trash-alt"></i>
     <%= link_to "Delete #{bookmark.movie.title}", bookmark_path(bookmark.id), method: :delete %>
     <br>
   <% end %>
   <br>
-  <%= link_to "Back to all lists", lists_path %>
+  <%= link_to "Back to all lists", root_path %>
   <br>
   <br>
   <%= link_to "Delete #{@list.name}",
