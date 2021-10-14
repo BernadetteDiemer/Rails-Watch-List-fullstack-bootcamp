@@ -1,13 +1,8 @@
 <div class="container">
-  <%= cl_image_tag("https://res.cloudinary.com/dbqihej36/image/upload/v1634067698/dfbv45a3ibjjrr4zunbx.jpg", width: 400, height: 300, crop: :fill) %>
-  <h3><%= @list.name %></h3>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+  <%= @list.name  %>
+</div>
   <br>
-  <p>Add a movie</p>
-  <%= simple_form_for [ @list, @bookmark ] do |f| %>
-    <%= f.association :movie %>
-    <%= f.input :comment %>
-    <%= f.submit "add movie", class: "btn btn-primary" %>
-  <% end %>
 
 
   <% @list.bookmarks.each do |bookmark| %>
@@ -21,11 +16,18 @@
     <br>
   <% end %>
   <br>
+  <p>Add a movie</p>
+  <%= simple_form_for [ @list, @bookmark ] do |f| %>
+    <%= f.association :movie %>
+    <%= f.input :comment %>
+    <%= f.submit "add movie", class: "btn btn-primary" %>
+  <% end %>
+  <br>
   <%= link_to "Back to all lists", root_path %>
   <br>
   <br>
   <%= link_to "Delete #{@list.name}",
-              list_path(@list),
+              list_path(@list.id),
               method: :delete,
               data: { confirm: "Are you sure?" } %>
 </div>
